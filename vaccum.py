@@ -24,26 +24,31 @@ class VacuumCleanerAgent:
             print(f"\nRoom A is clean.Moved right to Room B. New state: {self.state}")
 
     def clean(self):
+        p=0
         while self.state[1] == 1 or self.state[2] == 1:
             if self.state[0] == "A" and self.state[1] == 1:
                 self.suck()
+                p+=1
             elif self.state[0] == "B" and self.state[2] == 1:
                 self.suck()
+                p+=1
             elif self.state[0] == "A" and self.state[2] == 1:
                 self.move_right()
             elif self.state[0] == "B" and self.state[1] == 1:
                 self.move_left()
         if self.state[1] == 0 and self.state[2] == 0:
             print("\nBOTH RO0MS ARE CLEAN.GOAL ACHIVED \n")
+        return p
 
 agentposition=input("\nEnter the postion of agent (A|B) :")
 left=int(input("\nEnter the 1 if room A is dirty else 0 :"))
 right=int(input("\nEnter the 1 if room B is dirty else 0 :"))
 initial_state = (agentposition.upper(),left,right)
-print("INITIAL STATE",initial_state)
+print("\nINITIAL STATE",initial_state)
 
 
 agent = VacuumCleanerAgent(initial_state)
 
 
-agent.clean()
+s=agent.clean()
+print("Performance Measure :",s)
