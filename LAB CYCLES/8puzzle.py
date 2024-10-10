@@ -66,7 +66,7 @@ def reconstruct_path(state):
 
 def read_input():
     print("Start state :\n")
-    start_board = [0,2,3,1,4,6,7,5,8]
+    start_board = [1,2,3,7,4,8,0,5,6]
     for i in range(0,9,3):
         p=start_board[i:i+3]
         print(p)
@@ -75,7 +75,7 @@ def read_input():
     print("Goal state :\n")
     goal_board = [1,2,3,4,5,6,7,8,0]
     for i in range(0,9,3):
-        p=start_board[i:i+3]
+        p=goal_board[i:i+3]
         print(p)
     print()
     return start_board, goal_board
